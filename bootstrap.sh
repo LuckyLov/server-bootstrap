@@ -2,14 +2,19 @@
 set -Eeuo pipefail
 
 WANGQI_ROOT="/home/ubuntu/wangqi"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASE_PACKAGES_FILE="${SCRIPT_DIR}/config/base-packages.txt"
 [[ $(id -un) == ubuntu ]] || { echo 'Run this script as ubuntu.' >&2; exit 1; }
 [[ -r /etc/os-release ]] || { echo 'Missing /etc/os-release.' >&2; exit 1; }
+[[ -r ${BASE_PACKAGES_FILE} ]] || { echo "Missing ${BASE_PACKAGES_FILE}." >&2; exit 1; }
 . /etc/os-release
 [[ ${ID:-} == ubuntu ]] || { echo "Only Ubuntu is supported; detected ${ID:-unknown}." >&2; exit 1; }
 case "${VERSION_ID:-}" in 22.04|24.04|26.04) ;; *) echo "Unsupported Ubuntu version: ${VERSION_ID:-unknown}." >&2; exit 1 ;; esac
 
 sudo apt-get update
-sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl git gh rsync tmux htop gnupg
+mapfile -t base_packages < <(awk '!/^[[:space:]]*(#|$)/ { print $1 }' "${BASE_PACKAGES_FILE}")
+[[ ${#base_packages[@]} -gt 0 ]] || { echo "No packages listed in ${BASE_PACKAGES_FILE}." >&2; exit 1; }
+sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y "${base_packages[@]}"
 
 docker_key=/etc/apt/keyrings/docker.asc
 docker_sources=/etc/apt/sources.list.d/docker.sources

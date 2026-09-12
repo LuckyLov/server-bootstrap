@@ -1,0 +1,10 @@
+# Minimal Ubuntu packages for the wangqi user environment.
+# Keep one APT package name per line; blank lines and comments are ignored.
+ca-certificates
+curl
+git
+gh
+rsync
+tmux
+htop
+gnupg

@@ -27,6 +27,8 @@ chmod +x bootstrap.sh verify.sh
 
 脚本不会卸载冲突软件、删除 Docker 资源、执行 prune、修改 SSH、防火墙、Caddy 或其他用户环境。Docker 使用共享系统 daemon；个人容器、网络和 volume 必须使用 `wangqi-` 前缀。
 
+基础 Ubuntu 软件包清单位于 `config/base-packages.txt`，`bootstrap.sh` 会自动读取并幂等安装。以后增加基础组件时，在该文件新增一行、提交并推送即可；不要把个人项目依赖直接安装到系统环境。
+
 GitHub CLI (`gh`) 通过 Ubuntu 软件包安装，用于在需要认证的 GitHub 仓库上执行 Git 凭据配置。新服务器初始化后，由本人交互执行：
 
 ```bash
