@@ -1,0 +1,59 @@
+# Environment files: commit only explicit examples.
+.env
+.env.*
+!.env.example
+config/*.env
+!config/example.env
+
+# Private keys and credentials.
+*.pem
+*.key
+**/credentials
+**/credentials.*
+**/credential
+**/credential.*
+**/token
+**/token.*
+**/tokens
+**/tokens.*
+**/secret
+**/secret.*
+**/secrets
+**/secrets.*
+**/auth.json
+**/auth.jsonl
+**/*token*.json
+**/.ssh/
+**/.codex/
+
+# Runtime databases and state.
+*.sqlite
+*.sqlite3
+*.sqlite*
+*.db
+*.db-*
+*.wal
+*.shm
+*.pid
+
+# Caches, temporary files, logs, outputs and local data.
+**/.cache/
+**/cache/
+**/tmp/
+**/logs/
+**/outputs/
+**/data/
+**/dataset/
+**/datasets/
+
+# Large or generated artifacts.
+*.parquet
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pt
+*.pth
+*.tar
+*.tar.gz
+*.zip

@@ -1,0 +1,30 @@
+# Wangqi Server Bootstrap
+
+这是 `/home/ubuntu/wangqi` 个人教学/科研节点的可重建配置仓库。
+
+本仓库只保存环境说明、幂等脚本和非敏感示例配置，不保存真实密码、Token、Clash 配置、Codex 登录文件、SSH 私钥、数据库和实验数据。
+
+## 全新 Ubuntu 快速开始
+
+```bash
+cd /home/ubuntu/wangqi/server-bootstrap
+chmod +x bootstrap.sh verify.sh
+./bootstrap.sh
+./verify.sh
+```
+
+如果新服务器所在网络不能直接访问 OpenAI 或 Docker Hub，应先准备服务器侧代理，或在执行脚本时临时提供 `HTTP_PROXY`/`HTTPS_PROXY`。真实代理配置应恢复到 `/home/ubuntu/wangqi/data/proxy/config.yaml`，不能提交到 GitHub。
+
+## 当前节点约定
+
+- 个人工作区：`/home/ubuntu/wangqi`
+- Git 仓库：`/home/ubuntu/wangqi/repos`
+- 持久数据：`/home/ubuntu/wangqi/data`
+- 备份：`/home/ubuntu/wangqi/backups`
+- 当前代理容器：`wangqi-proxy`
+- 代理配置：`/home/ubuntu/wangqi/data/proxy/config.yaml`，仅本机使用，权限应为 `600`
+- Mihomo Compose 示例：`config/mihomo-compose.yaml`
+
+脚本不会卸载冲突软件、删除 Docker 资源、执行 prune、修改 SSH、防火墙、Caddy 或其他用户环境。Docker 使用共享系统 daemon；个人容器、网络和 volume 必须使用 `wangqi-` 前缀。
+
+Codex CLI 按 OpenAI 官方 Linux 独立安装器安装。脚本不会执行 ChatGPT/Codex 登录，也不会读取或复制认证文件；新服务器上需由本人手动运行 `codex` 完成登录。

@@ -1,0 +1,13 @@
+name: wangqi-proxy
+
+services:
+  mihomo:
+    image: metacubex/mihomo:v1.19.26
+    container_name: wangqi-proxy
+    restart: unless-stopped
+    command: ["-f", "/root/.config/mihomo/config.yaml"]
+    network_mode: host
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /home/ubuntu/wangqi/data/proxy:/root/.config/mihomo
