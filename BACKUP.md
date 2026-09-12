@@ -24,6 +24,7 @@
 
 - Clash 订阅 URL、节点凭据和配置
 - `.env`、数据库密码、API Token
+- GitHub CLI (`gh`) 登录认证文件和 Token
 - SSH 私钥和云厂商凭据
 - Codex/ChatGPT 登录认证文件
 

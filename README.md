@@ -2,7 +2,7 @@
 
 这是 `/home/ubuntu/wangqi` 个人教学/科研节点的可重建配置仓库。
 
-本仓库只保存环境说明、幂等脚本和非敏感示例配置，不保存真实密码、Token、Clash 配置、Codex 登录文件、SSH 私钥、数据库和实验数据。
+本仓库只保存环境说明、幂等脚本和非敏感示例配置，不保存真实密码、Token、GitHub CLI/Codex 登录文件、Clash 配置、SSH 私钥、数据库和实验数据。
 
 ## 全新 Ubuntu 快速开始
 
@@ -26,5 +26,14 @@ chmod +x bootstrap.sh verify.sh
 - Mihomo Compose 示例：`config/mihomo-compose.yaml`
 
 脚本不会卸载冲突软件、删除 Docker 资源、执行 prune、修改 SSH、防火墙、Caddy 或其他用户环境。Docker 使用共享系统 daemon；个人容器、网络和 volume 必须使用 `wangqi-` 前缀。
+
+GitHub CLI (`gh`) 通过 Ubuntu 软件包安装，用于在需要认证的 GitHub 仓库上执行 Git 凭据配置。新服务器初始化后，由本人交互执行：
+
+```bash
+gh auth login
+gh auth setup-git
+```
+
+认证文件和 Token 保留在用户目录中，不进入本仓库；脚本不会读取、复制、备份或上传它们。
 
 Codex CLI 按 OpenAI 官方 Linux 独立安装器安装。脚本不会执行 ChatGPT/Codex 登录，也不会读取或复制认证文件；新服务器上需由本人手动运行 `codex` 完成登录。

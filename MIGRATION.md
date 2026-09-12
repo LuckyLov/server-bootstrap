@@ -14,7 +14,7 @@
 
 ## 3. GitHub 同步
 
-提交并推送 `server-bootstrap` 和 Quiz King 代码仓库。推送前检查 `.env`、私钥、Token、Codex 登录目录、数据库和大型数据集没有被跟踪。
+如需访问私有仓库，由本人交互执行 `gh auth login` 和 `gh auth setup-git`。提交并推送 `server-bootstrap` 和 Quiz King 代码仓库。推送前检查 `.env`、私钥、Token、GitHub CLI/Codex 登录目录、数据库和大型数据集没有被跟踪。
 
 ## 4. 新服务器初始化
 

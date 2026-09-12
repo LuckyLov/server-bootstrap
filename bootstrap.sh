@@ -9,7 +9,7 @@ WANGQI_ROOT="/home/ubuntu/wangqi"
 case "${VERSION_ID:-}" in 22.04|24.04|26.04) ;; *) echo "Unsupported Ubuntu version: ${VERSION_ID:-unknown}." >&2; exit 1 ;; esac
 
 sudo apt-get update
-sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl git rsync tmux htop gnupg
+sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl git gh rsync tmux htop gnupg
 
 docker_key=/etc/apt/keyrings/docker.asc
 docker_sources=/etc/apt/sources.list.d/docker.sources

@@ -13,7 +13,7 @@ done
 [[ $(stat -c '%U' "${ROOT}" 2>/dev/null) == ubuntu ]] && ok 'workspace owner ubuntu' || warn 'workspace owner is not ubuntu'
 [[ $(stat -c '%a' "${ROOT}" 2>/dev/null) == 700 ]] && ok 'workspace mode 700' || warn 'workspace mode is not 700'
 
-for command_name in git curl rsync tmux; do
+for command_name in git gh curl rsync tmux; do
   command -v "${command_name}" >/dev/null 2>&1 && ok "${command_name} available" || warn "${command_name} missing"
 done
 command -v codex >/dev/null 2>&1 || [[ -x ${HOME}/.local/bin/codex ]] && ok 'codex available' || warn 'codex missing'
