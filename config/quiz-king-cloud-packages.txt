@@ -1,0 +1,5 @@
+# Quiz King cloud deployment packages.
+# Kept separate from config/base-packages.txt because these packages modify
+# shared system services and are not auto-installed by generic bootstrap.
+nginx
+certbot

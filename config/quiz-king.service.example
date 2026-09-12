@@ -1,0 +1,24 @@
+[Unit]
+Description=Wangqi Quiz King cloud service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/wangqi/repos/quiz-king
+EnvironmentFile=/home/ubuntu/wangqi/data/quiz-king/quiz-king.env
+Environment=PATH=/home/ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+ExecStart=/usr/bin/corepack pnpm --filter @quiz-king/server cloud:start
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+UMask=0077
+StandardOutput=append:/home/ubuntu/wangqi/logs/quiz-king/service.log
+StandardError=append:/home/ubuntu/wangqi/logs/quiz-king/service-error.log
+
+[Install]
+WantedBy=multi-user.target

@@ -29,6 +29,8 @@ chmod +x bootstrap.sh verify.sh
 
 基础 Ubuntu 软件包清单位于 `config/base-packages.txt`，`bootstrap.sh` 会自动读取并幂等安装。以后增加基础组件时，在该文件新增一行、提交并推送即可；不要把个人项目依赖直接安装到系统环境。
 
+Quiz King 云端测试暂定使用 Nginx + Certbot 作为 HTTPS 反向代理。依赖、路径、systemd、Nginx 和证书配置模板见 `QUIZ_KING_CLOUD_DEPLOYMENT.md`、`config/quiz-king-cloud-packages.txt` 及 `config/quiz-king.*.example`。实际安装、systemd、Nginx、证书和防火墙配置都属于系统级变更，必须在检查共享服务并确认后执行。Caddy 仅保留为未来可选方案，本阶段不切换。
+
 GitHub CLI (`gh`) 通过 Ubuntu 软件包安装，用于在需要认证的 GitHub 仓库上执行 Git 凭据配置。新服务器初始化后，由本人交互执行：
 
 ```bash
