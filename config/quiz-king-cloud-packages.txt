@@ -3,3 +3,5 @@
 # shared system services and are not auto-installed by generic bootstrap.
 nginx
 certbot
+npm
+pnpm
