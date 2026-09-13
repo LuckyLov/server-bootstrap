@@ -24,11 +24,13 @@
 ```text
 nginx
 certbot
+npm
+pnpm
 ```
 
 这份清单与通用 `config/base-packages.txt` 分开。原因是 Nginx、Certbot 会占用或管理共享系统的公网监听、配置和证书续期，不能被通用 `bootstrap.sh` 无条件自动安装。
 
-如果采用 Certbot 的 Nginx 插件，才按实际证书方案额外评估 `python3-certbot-nginx`；当前清单不预装该插件。公网 IPv4 证书的申请参数和 Certbot 版本必须沿用已经复审的部署方案，不能把普通域名证书命令直接套用到 IP 地址上。
+如果采用 Certbot 的 Nginx 插件，才按实际证书方案额外评估 `python3-certbot-nginx`；当前清单不预装该插件。`npm` 用于 Node.js 工具链，`pnpm` 应通过 Corepack 固定为仓库要求的 `11.19.0`，不应依赖系统软件源中的未知旧版本。公网 IPv4 证书的申请参数和 Certbot 版本必须沿用已经复审的部署方案，不能把普通域名证书命令直接套用到 IP 地址上。
 
 ## 运行边界
 
